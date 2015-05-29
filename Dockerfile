@@ -35,6 +35,6 @@ COPY docker-entrypoint.sh /entrypoint.sh
 COPY bin /solum/bin
 
 # grr, ENTRYPOINT resets CMD now
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 #run apache2 as foreground
 #CMD ["apache2-foreground"]
