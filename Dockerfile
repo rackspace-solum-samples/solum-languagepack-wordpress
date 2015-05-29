@@ -18,7 +18,6 @@ RUN docker-php-ext-install mysqli
 
 # set the volume to wordpress source code
 # VOLUME /var/www/html - solum creates /app where the user's code goes
-VOLUME /app
 
 # set some needed versions (default it to 4.2.2) 
 ENV WORDPRESS_VERSION 4.2.2
