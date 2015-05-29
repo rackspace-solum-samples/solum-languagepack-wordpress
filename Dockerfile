@@ -9,12 +9,16 @@ FROM php:5.6-apache
 RUN a2enmod rewrite
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev php5-mysql && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd
+	
+# install msyqli for mysql interaction
+RUN docker-php-ext-install mysqli	
 
 # set the volume to wordpress source code
-VOLUME /var/www/html
+# VOLUME /var/www/html - solum creates /app where the user's code goes
+VOLUME /app
 
 # set some needed versions (default it to 4.2.2) 
 ENV WORDPRESS_VERSION 4.2.2

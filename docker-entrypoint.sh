@@ -18,6 +18,8 @@ if [ -z "$WORDPRESS_DB_PASSWORD" ]; then
 	exit 1
 fi
 
+cd /app
+
 if ! [ -e index.php -a -e wp-includes/version.php ]; then
 	echo >&2 "WordPress not found in $(pwd) - copying now..."
 	if [ "$(ls -A)" ]; then
@@ -122,6 +124,7 @@ if (!$mysql->query('CREATE DATABASE IF NOT EXISTS `' . $mysql->real_escape_strin
 }
 
 $mysql->close();
+
 EOPHP
 
 exec "$@"
